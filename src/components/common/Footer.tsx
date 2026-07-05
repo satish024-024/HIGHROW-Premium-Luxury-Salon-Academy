@@ -284,7 +284,7 @@ export default function Footer() {
                 <span className="text-luxury-red text-[8px] font-sans font-bold tracking-[0.25em] uppercase mb-1">
                   Creator & Developer
                 </span>
-                <h4 className="font-serif text-sm font-bold text-white mb-3">Prakash Kadali</h4>
+                <h4 className="font-serif text-sm font-bold text-white mb-3">Satish Kumar</h4>
                 
                 <a
                   href="https://wa.me/919505683584"

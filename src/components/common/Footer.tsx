@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { SALON_INFO, NAVIGATION_LINKS } from "@/constants/data";
 import { MessageCircle, MapPin, Phone, Mail, Clock, Heart } from "lucide-react";
 
@@ -20,6 +20,7 @@ const FacebookIcon = ({ className }: { className?: string }) => (
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [showCreatorInfo, setShowCreatorInfo] = useState(false);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
@@ -262,9 +263,49 @@ export default function Footer() {
             <a href="#privacy" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
             <a href="#terms" className="hover:text-white transition-colors duration-300">Terms & Conditions</a>
           </div>
-          <p className="flex items-center gap-1 text-soft-gray/60">
-            Designed with <Heart className="w-3 h-3 text-luxury-red fill-current" /> by Gen Z Creations
-          </p>
+          <div className="relative flex items-center gap-1 text-soft-gray/60">
+            <button
+              onClick={() => setShowCreatorInfo(!showCreatorInfo)}
+              className="flex items-center gap-1 hover:text-white transition-colors duration-300 focus:outline-none cursor-pointer"
+              aria-label="View website designer details"
+            >
+              Designed with <Heart className="w-3 h-3 text-luxury-red fill-current" /> by Gen Z Creations
+            </button>
+
+            {showCreatorInfo && (
+              <div className="absolute bottom-10 right-0 z-30 p-6 rounded-2xl bg-[#121212] border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.9)] flex flex-col text-left min-w-[260px] animate-fade-in glass-panel">
+                <button
+                  onClick={() => setShowCreatorInfo(false)}
+                  className="absolute top-3 right-3 text-soft-gray/60 hover:text-white text-xs font-bold cursor-pointer"
+                  aria-label="Close details"
+                >
+                  ✕
+                </button>
+                <span className="text-luxury-red text-[8px] font-sans font-bold tracking-[0.25em] uppercase mb-1">
+                  Creator & Developer
+                </span>
+                <h4 className="font-serif text-sm font-bold text-white mb-3">Prakash Kadali</h4>
+                
+                <a
+                  href="https://wa.me/919505683584"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-soft-gray/80 hover:text-white transition-colors duration-300 flex items-center gap-2 mb-2 bg-white/[0.02] border border-white/5 p-2 rounded-lg"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+                  <span>+91 9505683584</span>
+                </a>
+                
+                <a
+                  href="mailto:prakashkadali3723@gmail.com"
+                  className="text-xs text-soft-gray/80 hover:text-white transition-colors duration-300 flex items-center gap-2 bg-white/[0.02] border border-white/5 p-2 rounded-lg"
+                >
+                  <Mail className="w-3.5 h-3.5 text-luxury-red" />
+                  <span className="truncate">prakashkadali3723@gmail.com</span>
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </footer>

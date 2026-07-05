@@ -66,7 +66,7 @@ export default function HeroSection() {
           fill
           sizes="100vw"
           priority
-          className="object-cover opacity-80"
+          className="object-cover opacity-100"
         />
         {/* Soft Vignette Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/45 to-[#050505] z-20" />

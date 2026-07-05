@@ -370,6 +370,6 @@ export const TRANSFORMATIONS: TransformationItem[] = [
 export const BANNER_MODEL_LEFT = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600&auto=format&fit=crop";
 export const BANNER_MODEL_RIGHT = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop";
 export const STATS_MODEL_PORTRAIT = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop";
-export const HERO_SALON_IMAGE = "/hero_salon_premium.png"; // Premium salon interior
+export const HERO_SALON_IMAGE = "/hero_salon_user_v3.png"; // Premium salon interior
 export const ACADEMY_MODEL_STUDENTS = "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop";
 export const MOCK_CINEMATIC_VIDEO = "https://assets.mixkit.co/videos/preview/mixkit-stylist-washing-hairs-of-a-woman-in-a-salon-45133-large.mp4"; // Looping high-quality stock video clip

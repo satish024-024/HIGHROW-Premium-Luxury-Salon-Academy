@@ -58,8 +58,9 @@ export default function HeroSection() {
       id="home"
       className="relative min-h-screen flex flex-col justify-between pt-32 pb-24 md:pb-36 bg-black overflow-hidden"
     >
-      {/* Cinematic Image Background (matching mockup precisely) */}
+      {/* Cinematic Background Video / Image fallback */}
       <div className="absolute inset-0 z-0 bg-black">
+        {/* Fallback static image background */}
         <Image
           src={HERO_SALON_IMAGE}
           alt="Highrow Luxury Salon Interior"
@@ -68,6 +69,16 @@ export default function HeroSection() {
           priority
           className="object-cover opacity-100"
         />
+        {/* Custom background video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-100 z-10"
+        >
+          <source src={MOCK_CINEMATIC_VIDEO} type="video/mp4" />
+        </video>
         {/* Soft Vignette Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/45 to-[#050505] z-20" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#000_100%)] z-20 opacity-40" />

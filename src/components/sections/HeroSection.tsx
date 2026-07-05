@@ -85,8 +85,8 @@ export default function HeroSection() {
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-8 w-full flex-grow flex flex-col justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
-          
+        {/* Main Grid: Left copy, Right blank spacing */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full mb-12">
           {/* Left Column: Brand Copy & Actions */}
           <div className="lg:col-span-8 flex flex-col items-start text-left">
             {/* Tagline */}
@@ -125,7 +125,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-16"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
             >
               <a
                 href="#contact"
@@ -144,62 +144,67 @@ export default function HeroSection() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </a>
             </motion.div>
+          </div>
+          
+          {/* Right Column: Empty spacer on desktop to balance layout and showcase background */}
+          <div className="hidden lg:block lg:col-span-4" />
+        </div>
 
-            {/* Trust Indicators */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-6 border-t border-white/5 w-full max-w-3xl"
-            >
-              {TRUST_INDICATORS.map((badge, idx) => {
-                const renderIcon = () => {
-                  const props = { className: "w-5 h-5 text-luxury-red shrink-0" };
-                  switch (badge.icon) {
-                    case "star": return <Star {...props} className="w-5 h-5 text-luxury-red fill-luxury-red/20 shrink-0" />;
-                    case "award": return <Award {...props} />;
-                    case "sparkles": return <Sparkles {...props} />;
-                    default: return <ShieldCheck {...props} />;
-                  }
-                };
+        {/* Full-width Horizontal Trust Indicators & Watch Story Row */}
+        <div className="w-full pt-8 border-t border-white/5 flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-6">
+          
+          {/* Trust badges list */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="grid grid-cols-2 md:grid-cols-4 lg:flex lg:flex-nowrap items-center gap-6 xl:gap-8 grow"
+          >
+            {TRUST_INDICATORS.map((badge, idx) => {
+              const renderIcon = () => {
+                const props = { className: "w-4 h-4 text-luxury-red shrink-0" };
+                switch (badge.icon) {
+                  case "star": return <Star {...props} className="w-4 h-4 text-luxury-red fill-luxury-red/20 shrink-0" />;
+                  case "award": return <Award {...props} />;
+                  case "sparkles": return <Sparkles {...props} />;
+                  default: return <ShieldCheck {...props} />;
+                }
+              };
 
-                return (
-                  <div key={badge.id} className="flex gap-3 items-start">
-                    <div className="w-10 h-10 rounded-full border border-white/5 bg-white/[0.02] flex items-center justify-center shrink-0">
-                      {renderIcon()}
-                    </div>
-                    <div className="flex flex-col text-left">
-                      <span className="text-[12px] font-sans font-bold text-white tracking-wide">
-                        {badge.title}
-                      </span>
-                      <span className="text-[10px] font-sans font-medium text-soft-gray/80 mt-0.5">
-                        {badge.subtitle}
-                      </span>
-                    </div>
+              return (
+                <div key={badge.id} className="flex gap-2.5 items-center shrink-0">
+                  <div className="w-9 h-9 rounded-full border border-white/5 bg-white/[0.02] flex items-center justify-center shrink-0">
+                    {renderIcon()}
                   </div>
-                );
-              })}
-            </motion.div>
-          </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-[11px] font-sans font-bold text-white tracking-wide leading-tight">
+                      {badge.title}
+                    </span>
+                    <span className="text-[9px] font-sans font-medium text-soft-gray/70 mt-0.5">
+                      {badge.subtitle}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
 
-          {/* Right Column: Watch Story Play Button */}
-          <div className="lg:col-span-4 flex justify-center lg:justify-end items-center relative h-36 lg:h-auto">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="flex items-center gap-4 cursor-pointer group"
-              onClick={() => setIsPlayingStory(true)}
-            >
-              <div className="relative w-16 h-16 rounded-full border border-white/10 flex items-center justify-center bg-black/40 backdrop-blur-sm group-hover:border-luxury-red group-hover:scale-105 transition-all duration-500">
-                <Play className="w-5 h-5 text-white fill-white ml-0.5 group-hover:text-luxury-red group-hover:fill-luxury-red transition-all duration-300" />
-                <span className="absolute inset-0 rounded-full border border-white/20 animate-ping opacity-30 group-hover:border-luxury-red/40" />
-              </div>
-              <span className="text-[10px] font-sans font-bold tracking-[0.25em] text-white uppercase group-hover:text-luxury-red transition-colors duration-300">
-                Watch Our Story
-              </span>
-            </motion.div>
-          </div>
+          {/* Watch Story Play Button aligned to the right on desktop */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="flex items-center gap-3 cursor-pointer group shrink-0 w-fit self-start lg:self-center"
+            onClick={() => setIsPlayingStory(true)}
+          >
+            <div className="relative w-11 h-11 rounded-full border border-white/10 flex items-center justify-center bg-black/40 backdrop-blur-sm group-hover:border-luxury-red group-hover:scale-105 transition-all duration-500">
+              <Play className="w-4 h-4 text-white fill-white ml-0.5 group-hover:text-luxury-red group-hover:fill-luxury-red transition-all duration-300" />
+              <span className="absolute inset-0 rounded-full border border-white/20 animate-ping opacity-30 group-hover:border-luxury-red/40" />
+            </div>
+            <span className="text-[9px] font-sans font-bold tracking-[0.2em] text-white uppercase group-hover:text-luxury-red transition-colors duration-300">
+              Watch Our Story
+            </span>
+          </motion.div>
 
         </div>
       </div>
